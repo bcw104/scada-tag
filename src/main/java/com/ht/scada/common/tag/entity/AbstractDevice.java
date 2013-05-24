@@ -22,6 +22,8 @@ public abstract class AbstractDevice extends AbstractPersistable<Integer> {
 	private Date fixTime; // 安装日期
 	private String fixPositin; // 安装位置
 	private String remark; // 备注
+	private String number;	//序号
+	private String checkInterval;	//校准时间间隔
 
 	public String getName() {
 		return name;
@@ -70,5 +72,23 @@ public abstract class AbstractDevice extends AbstractPersistable<Integer> {
 	public void setRemark(String remark) {
 		this.remark = remark;
 	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public String getCheckInterval() {
+		return checkInterval;
+	}
+
+	public void setCheckInterval(String checkInterval) {
+		this.checkInterval = checkInterval;
+	}
+	
+	
 
 }
