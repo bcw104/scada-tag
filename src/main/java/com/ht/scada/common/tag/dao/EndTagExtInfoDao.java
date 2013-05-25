@@ -3,6 +3,7 @@ package com.ht.scada.common.tag.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.ht.scada.common.tag.entity.EndTagExtInfo;
@@ -18,4 +19,13 @@ public interface EndTagExtInfoDao extends JpaRepository<EndTagExtInfo, Integer> 
 	 */
 	@Query("select e from EndTagExtInfo e where e.endTag.id = ?1")
 	public List<EndTagExtInfo> getByEndTagId(int endTagId);
+	
+	/**
+	 * 通过末端Id删除
+	 * @param id
+	 */
+	@Modifying
+	@Query("delete from EndTagExtInfo e where e.endTag.id = ?1")
+	public void deleteByTagId(int id);
+	
 }

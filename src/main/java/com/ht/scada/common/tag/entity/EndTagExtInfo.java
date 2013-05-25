@@ -27,8 +27,9 @@ public class EndTagExtInfo extends AbstractPersistable<Integer> {
 	@JoinColumn(name="end_tag_id")
 	private EndTag endTag;
 	
-	private String name;
-	private String value;
+	private String name;	//中文名
+	private String value;	//值
+	private String keyName;		//英文key
 
 	public EndTagExtInfo() {
 	}
@@ -60,5 +61,14 @@ public class EndTagExtInfo extends AbstractPersistable<Integer> {
 	public void setValue(String value) {
 		this.value = value;
 	}
+
+	public String getKeyName() {
+		return keyName;
+	}
+
+	public void setKeyName(String keyName) {
+		this.keyName = keyName;
+	}
+
 
 }

@@ -47,4 +47,14 @@ public class EndTagExtInfoServiceImpl implements EndTagExtInfoService {
 		return endTagExtInfoDao.getByEndTagId(endTagId);
 	}
 
+	@Override
+	public void saveAll(List<EndTagExtInfo> endTagExtInfoList) {
+		endTagExtInfoDao.save(endTagExtInfoList);
+	}
+
+	@Override
+	public void deleteByEndTagId(Integer id) {
+		endTagExtInfoDao.deleteByTagId(id);
+	}
+
 }

@@ -23,26 +23,22 @@ public class SensorDeviceServiceImpl implements SensorDeviceService {
 	
 	@Override
 	public void create(SensorDevice domain) {
-		// TODO Auto-generated method stub
-
+		sensorDeviceDao.save(domain);
 	}
 
 	@Override
 	public void deleteById(int id) {
-		// TODO Auto-generated method stub
-
+		sensorDeviceDao.delete(id);
 	}
 
 	@Override
 	public void update(SensorDevice domain) {
-		// TODO Auto-generated method stub
-
+		sensorDeviceDao.save(domain);
 	}
 
 	@Override
 	public SensorDevice getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return sensorDeviceDao.findOne(id);
 	}
 
 	@Override

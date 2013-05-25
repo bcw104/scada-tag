@@ -24,6 +24,13 @@ public abstract class AbstractDevice extends AbstractPersistable<Integer> {
 	private String remark; // 备注
 	private String number;	//序号
 	private String checkInterval;	//校准时间间隔
+	
+	private int address;		// 通讯地址
+	
+	/**
+	 * 别名
+	 */
+	private String nickName;
 
 	public String getName() {
 		return name;
@@ -87,6 +94,22 @@ public abstract class AbstractDevice extends AbstractPersistable<Integer> {
 
 	public void setCheckInterval(String checkInterval) {
 		this.checkInterval = checkInterval;
+	}
+
+	public String getNickName() {
+		return nickName;
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
+	}
+
+	public int getAddress() {
+		return address;
+	}
+
+	public void setAddress(int address) {
+		this.address = address;
 	}
 	
 	

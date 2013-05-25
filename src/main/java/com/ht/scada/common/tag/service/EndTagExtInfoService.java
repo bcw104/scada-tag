@@ -18,5 +18,17 @@ public interface EndTagExtInfoService extends BaseService<EndTagExtInfo> {
 	 * @return
 	 */
 	List<EndTagExtInfo> getByEndTagId(int endTagId);
+	
+	/**
+	 * 批量保存
+	 * @param endTagExtInfoList
+	 */
+	void saveAll(List<EndTagExtInfo> endTagExtInfoList);
+	
+	/**
+	 * 通过末端id删除属性
+	 * @param id
+	 */
+	void deleteByEndTagId(Integer id);
 
 }

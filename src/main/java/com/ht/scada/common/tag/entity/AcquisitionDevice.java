@@ -30,7 +30,7 @@ public class AcquisitionDevice extends AbstractDevice {
 	@Type(type = "org.hibernate.type.NumericBooleanType")
 	private boolean used;		// 启用
 	
-	private int address;		// 通讯地址
+	
 	private int timeout;		// 通讯超时（ms）
 	private int retry;			// 重发
 	
@@ -46,14 +46,6 @@ public class AcquisitionDevice extends AbstractDevice {
 	
 	public AcquisitionDevice(Integer id) {
 		setId(id);
-	}
-
-	public int getAddress() {
-		return address;
-	}
-
-	public void setAddress(int address) {
-		this.address = address;
 	}
 
 	public int getTimeout() {
