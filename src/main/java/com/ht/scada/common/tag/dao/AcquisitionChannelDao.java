@@ -9,5 +9,7 @@ import com.ht.scada.common.tag.entity.AcquisitionChannel;
 public interface AcquisitionChannelDao extends JpaRepository<AcquisitionChannel, Integer> {
 
 	List<AcquisitionChannel> findAll();
+	
+	AcquisitionChannel findByIdx(Integer idx);
 
 }

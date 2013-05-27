@@ -51,4 +51,10 @@ public class AcquisitionDeviceServiceImpl implements AcquisitionDeviceService {
 		return acquisitionDeviceDao.findOne(id);
 	}
 
+	@Override
+	public AcquisitionDevice getDeviceByChannelIdAndDeviceId(Integer channelId,
+			Integer deviceId) {
+		return acquisitionDeviceDao.findByChannelIdAndDeviceId(channelId, deviceId);
+	}
+
 }

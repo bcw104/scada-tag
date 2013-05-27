@@ -59,4 +59,9 @@ public class EndTagServiceImpl implements EndTagService {
         return endTagDao.findByCode(code);
     }
 
+	@Override
+	public void saveAll(List<EndTag> endTagList) {
+		endTagDao.save(endTagList);
+	}
+
 }

@@ -17,20 +17,6 @@ public class AcquisitionChannelServiceImpl implements AcquisitionChannelService 
 	private AcquisitionChannelDao acquisitionChannelDao;
 
 	
-	@Override
-	public List<AcquisitionChannel> getRootAcquisitionChannel() {
-		return acquisitionChannelDao.findAll();
-	}
-
-	@Override
-	public List<AcquisitionChannel> getDeviceByChannelId(Integer channelId) {
-		AcquisitionChannel parentMajor = acquisitionChannelDao
-				.findOne(channelId);
-		if (parentMajor == null) {
-			return null;
-		}
-		return acquisitionChannelDao.findAll();
-	}
 
     @Override
     public List<AcquisitionChannel> getAllChannel() {
@@ -56,8 +42,12 @@ public class AcquisitionChannelServiceImpl implements AcquisitionChannelService 
 
 	@Override
 	public AcquisitionChannel getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return acquisitionChannelDao.findOne(id);
+	}
+
+	@Override
+	public AcquisitionChannel getByIdx(Integer idx) {
+		return acquisitionChannelDao.findByIdx(idx);
 	}
 
 	
