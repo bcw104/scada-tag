@@ -3,6 +3,8 @@ package com.ht.scada.common.tag.type.service;
 import java.util.List;
 
 import com.ht.scada.common.tag.entity.VarGroupCfg;
+import com.ht.scada.common.tag.type.entity.CommunicationProtocalType;
+import com.ht.scada.common.tag.type.entity.DataType;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoName;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoValue;
 import com.ht.scada.common.tag.type.entity.EndTagSubType;
@@ -10,6 +12,7 @@ import com.ht.scada.common.tag.type.entity.EndTagType;
 import com.ht.scada.common.tag.type.entity.MajorTagType;
 import com.ht.scada.common.tag.type.entity.VarSubType;
 import com.ht.scada.common.tag.type.entity.VarType;
+import com.ht.scada.common.tag.util.CommunicationProtocal;
 
 /**
  * 系统初始配置相关接口
@@ -99,6 +102,18 @@ public interface TypeService {
 	public void insertEndTagExtInfoValue(List<EndTagExtInfoValue> endTagExtInfoValueList);
 	
 	/**
+	 * 插入值类型
+	 * @param dataTypeList
+	 */
+	public void insertDataType(List<DataType> dataTypeList);
+	
+	/**
+	 * 插入通讯协议
+	 * @param communicationProtocalList
+	 */
+	public void insertCommunicationProtocalType(List<CommunicationProtocalType> communicationProtocalTypeList);
+	
+	/**
 	 * 删除所有类型
 	 * @author 赵磊
 	 */
@@ -109,6 +124,8 @@ public interface TypeService {
 	public List<MajorTagType> getAllMajorTagType();
 	public List<EndTagType> getAllEndTagType();
 	public List<VarSubType> getAllVarSubType();
+	public List<DataType> getAllDataType();
+	public List<CommunicationProtocalType> getAllCommunicationProtocalType();
 	
 	
 	public List<EndTagSubType> getSubTypeByEndTagTypeName(String name);
