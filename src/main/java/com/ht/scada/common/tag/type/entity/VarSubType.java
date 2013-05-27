@@ -55,7 +55,7 @@ public class VarSubType extends AbstractPersistable<Integer> {
 	}
 
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "group_id")
 	private VarGroupCfg varGroupCfg;
 	

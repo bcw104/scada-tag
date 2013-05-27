@@ -12,7 +12,6 @@ import com.ht.scada.common.tag.type.entity.EndTagType;
 import com.ht.scada.common.tag.type.entity.MajorTagType;
 import com.ht.scada.common.tag.type.entity.VarSubType;
 import com.ht.scada.common.tag.type.entity.VarType;
-import com.ht.scada.common.tag.util.CommunicationProtocal;
 
 /**
  * 系统初始配置相关接口

@@ -1,13 +1,12 @@
 package com.ht.scada.common.tag.entity;
 
-import com.ht.scada.common.tag.util.DataType;
-import com.ht.scada.common.tag.util.VarGroupEnum;
-import com.ht.scada.common.tag.util.VarSubTypeEnum;
-import com.ht.scada.common.tag.util.VarTypeEnum;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Index;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import javax.persistence.*;
 
 /**
  * 变量词典模板<br>

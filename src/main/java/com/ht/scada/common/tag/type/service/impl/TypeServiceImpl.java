@@ -27,7 +27,6 @@ import com.ht.scada.common.tag.type.entity.MajorTagType;
 import com.ht.scada.common.tag.type.entity.VarSubType;
 import com.ht.scada.common.tag.type.entity.VarType;
 import com.ht.scada.common.tag.type.service.TypeService;
-import com.ht.scada.common.tag.util.CommunicationProtocal;
 
 @Transactional
 @Service("typeService")
