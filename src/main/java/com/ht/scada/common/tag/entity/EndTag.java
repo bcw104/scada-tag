@@ -1,9 +1,17 @@
 package com.ht.scada.common.tag.entity;
 
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Index;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * 单井、回路等末端节点
@@ -26,6 +34,8 @@ public class EndTag extends AbstractPersistable<Integer> {
 	/**
 	 * 末端编号(油井编号/回路编号)
 	 */
+	@Column(nullable=false, unique=true)
+    @Index(name="idx_endtag_code")
 	private String code;
 
 	/**
