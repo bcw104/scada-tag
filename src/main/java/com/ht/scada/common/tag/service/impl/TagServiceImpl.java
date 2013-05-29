@@ -180,4 +180,10 @@ public class TagServiceImpl implements TagService {
     public List<VarIOInfo> getAllTagIOInfo() {
         return varIOInfoDao.findAll();  //To change body of implemented methods use File | Settings | File Templates.
     }
+
+	@Override
+	public TagCfgTpl getTagCfgTplBy(String code, String varName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -27,6 +27,14 @@ public interface TagService {
 	 * @param endTag
 	 */
 	public void createEndTag(EndTag endTag);
+	
+	/**
+	 * 通过编号和变量名获得变量
+	 * @param code 井号
+	 * @param varName 变量key
+	 * @return
+	 */
+	public TagCfgTpl getTagCfgTplBy(String code, String varName);
 
 	/**
 	 * 删除主索引
