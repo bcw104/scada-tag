@@ -34,7 +34,7 @@ public interface TagService {
 	 * @param varName 变量key
 	 * @return
 	 */
-	public TagCfgTpl getTagCfgTplBy(String code, String varName);
+	TagCfgTpl getTagCfgTplByCodeAndVarName(String code, String varName);
 
 	/**
 	 * 删除主索引

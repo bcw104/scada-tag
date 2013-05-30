@@ -3,6 +3,7 @@ package com.ht.scada.common.tag.service.impl;
 import com.ht.scada.common.tag.dao.AreaMinorTagDao;
 import com.ht.scada.common.tag.dao.EndTagDao;
 import com.ht.scada.common.tag.dao.MajorTagDao;
+import com.ht.scada.common.tag.dao.TagCfgTplDao;
 import com.ht.scada.common.tag.dao.VarIOInfoDao;
 import com.ht.scada.common.tag.entity.*;
 import com.ht.scada.common.tag.service.TagService;
@@ -23,6 +24,8 @@ public class TagServiceImpl implements TagService {
 	private AreaMinorTagDao areaMinorTagDao;
     @Autowired
     private VarIOInfoDao varIOInfoDao;
+    @Autowired
+    private TagCfgTplDao tagCfgTplDao;
 
 	@Override
 	public MajorTag getMajorTag(int id) {
@@ -182,8 +185,11 @@ public class TagServiceImpl implements TagService {
     }
 
 	@Override
-	public TagCfgTpl getTagCfgTplBy(String code, String varName) {
-		// TODO Auto-generated method stub
+	public TagCfgTpl getTagCfgTplByCodeAndVarName(String code, String varName) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			return tagCfgTplDao.getTagCfgTplByTplNameAndVarName(endTag.getTplName(), varName);
+		}
 		return null;
 	}
 }
