@@ -14,7 +14,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  *
  */
 @Entity
-@Table(name = "T_Type_EndTagSub")
+@Table(name = "T_Type_Endtag_Sub")
 public class EndTagSubType extends AbstractPersistable<Integer> {
 
 	/**

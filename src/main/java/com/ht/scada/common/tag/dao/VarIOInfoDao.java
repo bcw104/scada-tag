@@ -20,4 +20,13 @@ public interface VarIOInfoDao extends JpaRepository<VarIOInfo, Integer> {
 	 */
 	@Query("select v from VarIOInfo v where v.endTag.id = ?1")
 	List<VarIOInfo> findByEndTagId(int endTagId);
+	
+	/**
+	 * 通过监控对象id与变量名获得变量IO信息
+	 * @param endTagId
+	 * @param varName
+	 * @return
+	 */
+	@Query("select v from VarIOInfo v where v.endTag.id = ?1 and v.varName=?2")
+	VarIOInfo getByEndTagIdAndVarName(int endTagId, String varName);
 }

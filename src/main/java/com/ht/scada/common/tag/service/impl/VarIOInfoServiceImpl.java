@@ -53,5 +53,10 @@ public class VarIOInfoServiceImpl implements VarIOInfoService {
 		varIOInfoDao.save(varIOInfoList);
 	}
 
+	@Override
+	public VarIOInfo getByEndTagIdAndVarName(int endTagId, String varName) {
+		return varIOInfoDao.getByEndTagIdAndVarName(endTagId, varName);
+	}
+
 
 }

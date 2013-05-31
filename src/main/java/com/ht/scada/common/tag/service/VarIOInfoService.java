@@ -24,4 +24,12 @@ public interface VarIOInfoService extends BaseService<VarIOInfo> {
 	 * @param varIOInfoList
 	 */
 	void saveAll(List<VarIOInfo> varIOInfoList);
+	
+	/**
+	 * 通过监控对象id与变量名获得变量IO信息
+	 * @param endTagId
+	 * @param varName
+	 * @return
+	 */
+	VarIOInfo getByEndTagIdAndVarName(int endTagId, String varName);
 }
