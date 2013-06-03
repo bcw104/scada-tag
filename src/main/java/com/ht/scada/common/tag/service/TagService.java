@@ -194,4 +194,17 @@ public interface TagService {
 	public void updateAreaMinorTag(AreaMinorTag areaMinorTag);
 
     List<VarIOInfo> getAllTagIOInfo();
+    /**
+     * 通过井号获得所有传感器
+     * @param code
+     * @return
+     */
+    List<SensorDevice> getSensorDeviceByCode(String code);
+    
+    /**
+     * 通过井号和传感器别名获得所有传感器
+     * @param code
+     * @return
+     */
+    SensorDevice getSensorDeviceByCodeAndNickName(String code, String nickName);
 }

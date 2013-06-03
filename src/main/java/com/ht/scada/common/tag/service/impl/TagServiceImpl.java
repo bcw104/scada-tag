@@ -1,8 +1,10 @@
 package com.ht.scada.common.tag.service.impl;
 
+import com.ht.scada.common.tag.dao.AcquisitionDeviceDao;
 import com.ht.scada.common.tag.dao.AreaMinorTagDao;
 import com.ht.scada.common.tag.dao.EndTagDao;
 import com.ht.scada.common.tag.dao.MajorTagDao;
+import com.ht.scada.common.tag.dao.SensorDeviceDao;
 import com.ht.scada.common.tag.dao.TagCfgTplDao;
 import com.ht.scada.common.tag.dao.VarIOInfoDao;
 import com.ht.scada.common.tag.entity.*;
@@ -26,6 +28,10 @@ public class TagServiceImpl implements TagService {
     private VarIOInfoDao varIOInfoDao;
     @Autowired
     private TagCfgTplDao tagCfgTplDao;
+    @Autowired
+    private AcquisitionDeviceDao acquisitionDeviceDao;
+    @Autowired
+    private SensorDeviceDao sensorDeviceDao;
 
 	@Override
 	public MajorTag getMajorTag(int id) {
@@ -189,6 +195,31 @@ public class TagServiceImpl implements TagService {
 		EndTag endTag = endTagDao.findByCode(code);
 		if(endTag != null) {
 			return tagCfgTplDao.getTagCfgTplByTplNameAndVarName(endTag.getTplName(), varName);
+		}
+		return null;
+	}
+
+	@Override
+	public List<SensorDevice> getSensorDeviceByCode(String code) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			AcquisitionDevice device = acquisitionDeviceDao.findByChannelIdAndDeviceId(endTag.getChannelIdx(), endTag.getDeviceAddr());
+			if(device != null) {
+				return sensorDeviceDao.findByRtuDevice(device);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public SensorDevice getSensorDeviceByCodeAndNickName(String code,
+			String nickName) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			AcquisitionDevice device = acquisitionDeviceDao.findByChannelIdAndDeviceId(endTag.getChannelIdx(), endTag.getDeviceAddr());
+			if(device != null) {
+				return sensorDeviceDao.findByNickNameAndRtuDevice(nickName, device);
+			}
 		}
 		return null;
 	}

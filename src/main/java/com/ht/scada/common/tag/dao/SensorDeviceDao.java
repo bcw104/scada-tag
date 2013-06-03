@@ -3,6 +3,7 @@ package com.ht.scada.common.tag.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.ht.scada.common.tag.entity.AcquisitionDevice;
 import com.ht.scada.common.tag.entity.SensorDevice;
@@ -16,5 +17,8 @@ public interface SensorDeviceDao extends JpaRepository<SensorDevice, Integer> {
 	 * @return
 	 */
 	List<SensorDevice> findByRtuDevice(AcquisitionDevice deviceObject);
+	
+	
+	SensorDevice findByNickNameAndRtuDevice(String nickName, AcquisitionDevice rtuDevice);
 
 }
