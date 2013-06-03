@@ -6,6 +6,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 传感器设备
  * @author 薄成文
@@ -21,6 +23,7 @@ public class SensorDevice extends AbstractDevice {
 	private static final long serialVersionUID = -4215030492033268594L;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="rtu_device_id")
+	@JsonIgnore
 	private AcquisitionDevice rtuDevice;
 	
 
