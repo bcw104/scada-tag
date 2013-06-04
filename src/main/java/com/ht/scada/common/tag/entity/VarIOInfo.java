@@ -3,6 +3,7 @@ package com.ht.scada.common.tag.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,9 +24,11 @@ public class VarIOInfo extends AbstractPersistable<Integer> {
 	 */
 	private static final long serialVersionUID = 6647181244609273696L;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="endtag_id")
 	private EndTag endTag;
 	
+	@Column(name = "var_name")
 	private String varName;
 	
 	@Column(name = "base_value")

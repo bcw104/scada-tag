@@ -11,7 +11,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  *
  */
 @Entity
-@Table(name = "T_Type_MajorTag")
+@Table(name = "T_Type_Major_Tag")
 public class MajorTagType extends AbstractPersistable<Integer> {
 
 

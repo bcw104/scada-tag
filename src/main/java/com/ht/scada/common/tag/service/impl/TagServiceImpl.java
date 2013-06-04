@@ -1,8 +1,11 @@
 package com.ht.scada.common.tag.service.impl;
 
+import com.ht.scada.common.tag.dao.AcquisitionDeviceDao;
 import com.ht.scada.common.tag.dao.AreaMinorTagDao;
 import com.ht.scada.common.tag.dao.EndTagDao;
 import com.ht.scada.common.tag.dao.MajorTagDao;
+import com.ht.scada.common.tag.dao.SensorDeviceDao;
+import com.ht.scada.common.tag.dao.TagCfgTplDao;
 import com.ht.scada.common.tag.dao.VarIOInfoDao;
 import com.ht.scada.common.tag.entity.*;
 import com.ht.scada.common.tag.service.TagService;
@@ -23,6 +26,12 @@ public class TagServiceImpl implements TagService {
 	private AreaMinorTagDao areaMinorTagDao;
     @Autowired
     private VarIOInfoDao varIOInfoDao;
+    @Autowired
+    private TagCfgTplDao tagCfgTplDao;
+    @Autowired
+    private AcquisitionDeviceDao acquisitionDeviceDao;
+    @Autowired
+    private SensorDeviceDao sensorDeviceDao;
 
 	@Override
 	public MajorTag getMajorTag(int id) {
@@ -180,4 +189,38 @@ public class TagServiceImpl implements TagService {
     public List<VarIOInfo> getAllTagIOInfo() {
         return varIOInfoDao.findAll();  //To change body of implemented methods use File | Settings | File Templates.
     }
+
+	@Override
+	public TagCfgTpl getTagCfgTplByCodeAndVarName(String code, String varName) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			return tagCfgTplDao.getTagCfgTplByTplNameAndVarName(endTag.getTplName(), varName);
+		}
+		return null;
+	}
+
+	@Override
+	public List<SensorDevice> getSensorDeviceByCode(String code) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			AcquisitionDevice device = acquisitionDeviceDao.findByChannelIdAndDeviceId(endTag.getChannelIdx(), endTag.getDeviceAddr());
+			if(device != null) {
+				return sensorDeviceDao.findByRtuDevice(device);
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public SensorDevice getSensorDeviceByCodeAndNickName(String code,
+			String nickName) {
+		EndTag endTag = endTagDao.findByCode(code);
+		if(endTag != null) {
+			AcquisitionDevice device = acquisitionDeviceDao.findByChannelIdAndDeviceId(endTag.getChannelIdx(), endTag.getDeviceAddr());
+			if(device != null) {
+				return sensorDeviceDao.findByNickNameAndRtuDevice(nickName, device);
+			}
+		}
+		return null;
+	}
 }

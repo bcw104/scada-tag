@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ht.scada.common.tag.dao.VarGroupCfgDao;
 import com.ht.scada.common.tag.entity.VarGroupCfg;
+import com.ht.scada.common.tag.type.dao.CommunicationProtocalTypeDao;
+import com.ht.scada.common.tag.type.dao.DataTypeDao;
 import com.ht.scada.common.tag.type.dao.EndTagExtInfoNameDao;
 import com.ht.scada.common.tag.type.dao.EndTagExtInfoValueDao;
 import com.ht.scada.common.tag.type.dao.EndTagSubTypeDao;
@@ -15,6 +17,8 @@ import com.ht.scada.common.tag.type.dao.EndTagTypeDao;
 import com.ht.scada.common.tag.type.dao.MajorTagTypeDao;
 import com.ht.scada.common.tag.type.dao.VarSubTypeDao;
 import com.ht.scada.common.tag.type.dao.VarTypeDao;
+import com.ht.scada.common.tag.type.entity.CommunicationProtocalType;
+import com.ht.scada.common.tag.type.entity.DataType;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoName;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoValue;
 import com.ht.scada.common.tag.type.entity.EndTagSubType;
@@ -45,6 +49,10 @@ public class TypeServiceImpl implements TypeService {
 	private EndTagExtInfoNameDao endTagExtInfoNameDao;
 	@Autowired
 	private EndTagExtInfoValueDao endTagExtInfoValueDao;
+	@Autowired
+	private DataTypeDao dataTypeDao;
+	@Autowired
+	private CommunicationProtocalTypeDao communicationProtocalTypeDao;
 	
 	@Override
 	public void insertMajorTagType(MajorTagType majorTagType) {
@@ -175,6 +183,8 @@ public class TypeServiceImpl implements TypeService {
 		varGroupCfgDao.deleteAll();
 		endTagTypeDao.deleteAll();
 		majorTagTypeDao.deleteAll();
+		dataTypeDao.deleteAll();
+		communicationProtocalTypeDao.deleteAll();
 	}
 	@Override
 	public void insertEndTagExtInfoName(
@@ -186,6 +196,25 @@ public class TypeServiceImpl implements TypeService {
 	public void insertEndTagExtInfoValue(
 			List<EndTagExtInfoValue> endTagExtInfoValueList) {
 		endTagExtInfoValueDao.save(endTagExtInfoValueList);
+		
+	}
+	@Override
+	public void insertDataType(List<DataType> dataTypeList) {
+		dataTypeDao.save(dataTypeList);
+	}
+
+	@Override
+	public List<DataType> getAllDataType() {
+		return dataTypeDao.findAll();
+	}
+	@Override
+	public List<CommunicationProtocalType> getAllCommunicationProtocalType() {
+		return communicationProtocalTypeDao.findAll();
+	}
+	@Override
+	public void insertCommunicationProtocalType(
+			List<CommunicationProtocalType> communicationProtocalTypeList) {
+		communicationProtocalTypeDao.save(communicationProtocalTypeList);
 		
 	}
 

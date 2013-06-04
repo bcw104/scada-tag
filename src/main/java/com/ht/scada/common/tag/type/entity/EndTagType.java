@@ -14,7 +14,7 @@ import java.util.Set;
  * 
  */
 @Entity
-@Table(name = "T_Type_EndTag")
+@Table(name = "T_Type_Endtag")
 public class EndTagType extends AbstractPersistable<Integer> {
 
 	/**

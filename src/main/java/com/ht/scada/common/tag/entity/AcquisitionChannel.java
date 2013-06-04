@@ -1,12 +1,16 @@
 package com.ht.scada.common.tag.entity;
 
 
-import com.ht.scada.common.tag.util.CommunicationProtocal;
-import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
  * 采集通道模型<br>
@@ -40,8 +44,7 @@ public class AcquisitionChannel extends AbstractPersistable<Integer> {
 	 * ModbusRTU
 	 * DL645
 	 */
-	@Enumerated(EnumType.STRING)
-	private CommunicationProtocal protocal = CommunicationProtocal.IEC104;
+	private String protocal;
 	private int offline;// 离线阈值
 	private int intvl = 100;//ms
 	private String schedule = "* * * * * ?";// cron 任务调度表达式(误差1秒)
@@ -111,12 +114,14 @@ public class AcquisitionChannel extends AbstractPersistable<Integer> {
 		this.name = name;
 	}
 
-	public CommunicationProtocal getProtocal() {
-		return protocal;
+	public void setProtocal(String protocal) {
+		this.protocal = protocal;
 	}
 
-	public void setProtocal(CommunicationProtocal protocal) {
-		this.protocal = protocal;
+
+
+	public String getProtocal() {
+		return protocal;
 	}
 
 	public int getOffline() {

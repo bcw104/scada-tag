@@ -1,5 +1,6 @@
 package com.ht.scada.common.tag.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -29,6 +30,7 @@ public class EndTagExtInfo extends AbstractPersistable<Integer> {
 	
 	private String name;	//中文名
 	private String value;	//值
+	@Column(name = "key_name")
 	private String keyName;		//英文key
 
 	public EndTagExtInfo() {

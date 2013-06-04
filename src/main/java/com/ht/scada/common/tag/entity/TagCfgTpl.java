@@ -1,13 +1,12 @@
 package com.ht.scada.common.tag.entity;
 
-import com.ht.scada.common.tag.util.DataType;
-import com.ht.scada.common.tag.util.VarGroupEnum;
-import com.ht.scada.common.tag.util.VarSubTypeEnum;
-import com.ht.scada.common.tag.util.VarTypeEnum;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Index;
 import org.springframework.data.jpa.domain.AbstractPersistable;
-
-import javax.persistence.*;
 
 /**
  * 变量词典模板<br>
@@ -38,14 +37,11 @@ public class TagCfgTpl extends AbstractPersistable<Integer> {
 	@Column(name = "tag_name")
 	private String tagName;	//变量名，中文
 	@Column(name = "var_group")
-	@Enumerated(EnumType.STRING)
-	private VarGroupEnum varGroup; // 变量分组,可以为空
+	private String varGroup; // 变量分组,可以为空
 	@Column(name = "var_type")
-	@Enumerated(EnumType.STRING)
-	private VarTypeEnum varType; // 变量类型
+	private String varType; // 变量类型
 	@Column(name = "sub_Type")
-	@Enumerated(EnumType.STRING)
-	private VarSubTypeEnum subType; // 变量子类型
+	private String subType; // 变量子类型
 	
 
 	/* IO信息 */
@@ -60,8 +56,7 @@ public class TagCfgTpl extends AbstractPersistable<Integer> {
 	@Column(name = "byte_len")
 	private int byteLen = -1; // 字节长度
 	@Column(name = "data_type")
-	@Enumerated(EnumType.STRING)
-	private DataType dataType; // 值类型（bool, int32, int16, bcd, mod10000, float,
+	private String dataType; // 值类型（bool, int32, int16, bcd, mod10000, float,
 								// double）
 	@Column(name = "base_value")
 	private Float baseValue;// 基值
@@ -112,39 +107,7 @@ public class TagCfgTpl extends AbstractPersistable<Integer> {
 		this.varName = varName;
 	}
 
-	public VarGroupEnum getVarGroup() {
-		return varGroup;
-	}
-
-	public void setVarGroup(VarGroupEnum varGroup) {
-		this.varGroup = varGroup;
-	}
-
-	public VarTypeEnum getVarType() {
-		return varType;
-	}
-
-	public void setVarType(VarTypeEnum varType) {
-		this.varType = varType;
-	}
-
-
-
-	public VarSubTypeEnum getSubType() {
-		return subType;
-	}
-
-	public void setSubType(VarSubTypeEnum subType) {
-		this.subType = subType;
-	}
-
-	public DataType getDataType() {
-		return dataType;
-	}
-
-	public void setDataType(DataType dataType) {
-		this.dataType = dataType;
-	}
+	
 
 	public int getFunCode() {
 		return funCode;
@@ -249,5 +212,39 @@ public class TagCfgTpl extends AbstractPersistable<Integer> {
 	public void setTagName(String tagName) {
 		this.tagName = tagName;
 	}
+
+	public String getVarGroup() {
+		return varGroup;
+	}
+
+	public void setVarGroup(String varGroup) {
+		this.varGroup = varGroup;
+	}
+
+	public String getVarType() {
+		return varType;
+	}
+
+	public void setVarType(String varType) {
+		this.varType = varType;
+	}
+
+	public String getSubType() {
+		return subType;
+	}
+
+	public void setSubType(String subType) {
+		this.subType = subType;
+	}
+
+	public String getDataType() {
+		return dataType;
+	}
+
+	public void setDataType(String dataType) {
+		this.dataType = dataType;
+	}
+	
+	
 
 }

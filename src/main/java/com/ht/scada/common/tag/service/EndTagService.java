@@ -17,4 +17,9 @@ public interface EndTagService extends BaseService<EndTag>{
     List<EndTag> getEndTag4Comm();
 
     EndTag getByCode(String code);
+    /**
+     * 批量保存
+     * @param endTagList
+     */
+    void saveAll(List<EndTag> endTagList);
 }

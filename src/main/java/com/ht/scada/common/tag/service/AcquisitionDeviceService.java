@@ -21,6 +21,7 @@ public interface AcquisitionDeviceService extends
 	 */
 	void create(AcquisitionDevice acquisitionDevice);
 	
+	AcquisitionDevice getDeviceByChannelIdAndDeviceId(Integer channelId, Integer deviceId);
 	
 
 }

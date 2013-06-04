@@ -31,5 +31,15 @@ public interface TagCfgTplDao extends JpaRepository<TagCfgTpl, Integer>{
 	@Modifying
 	@Query("delete from TagCfgTpl t where t.tplName = ?1")
 	public void deleteByTplName(String tplName);
+	
+	
+	/**
+	 * 通过模板名和变量名获取变量对象
+	 * @param code
+	 * @param varName
+	 * @return
+	 */
+	@Query("select t from TagCfgTpl t where t.tplName = ?1 and t.varName=?2")
+	TagCfgTpl getTagCfgTplByTplNameAndVarName(String tplName, String varName);
 
 }

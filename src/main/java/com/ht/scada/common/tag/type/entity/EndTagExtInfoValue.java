@@ -17,7 +17,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  *
  */
 @Entity
-@Table(name = "T_Type_ExtValue")
+@Table(name = "T_Type_Ext_Value")
 public class EndTagExtInfoValue extends AbstractPersistable<Integer> {
 
 	private static final long serialVersionUID = 7804089766699969412L;

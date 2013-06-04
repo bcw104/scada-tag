@@ -16,7 +16,7 @@ import com.ht.scada.common.tag.entity.VarGroupCfg;
  *
  */
 @Entity
-@Table(name = "T_Type_VarSubType")
+@Table(name = "T_Type_Var_Sub_Type")
 public class VarSubType extends AbstractPersistable<Integer> {
 
 
@@ -55,7 +55,7 @@ public class VarSubType extends AbstractPersistable<Integer> {
 	}
 
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name = "group_id")
 	private VarGroupCfg varGroupCfg;
 	
