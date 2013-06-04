@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Index;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 单井、回路等末端节点
  * 
@@ -66,9 +68,11 @@ public class EndTag extends AbstractPersistable<Integer> {
 	private String tplName;
 	
 	@OneToMany(mappedBy = "endTag",  orphanRemoval=true)
+	@JsonIgnore
 	private List<VarIOInfo> ioInfo;
 
 	@OneToMany(mappedBy = "endTag", orphanRemoval=true)
+	@JsonIgnore
 	private List<EndTagExtInfo> extInfo;
 
 	/**
@@ -79,6 +83,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "device_id")
+	@JsonIgnore
 	private AcquisitionDevice device;
 
 	/**
@@ -89,6 +94,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "major_id")
+	@JsonIgnore
 	private MajorTag majorTag;
 
 	/**
@@ -99,6 +105,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "area_id")
+	@JsonIgnore
 	private AreaMinorTag areaMinorTag;
 
 	/**
@@ -109,6 +116,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "energy_id")
+	@JsonIgnore
 	private EnergyMinorTag energyMinorTag;
 
     public Integer getChannelIdx() {
