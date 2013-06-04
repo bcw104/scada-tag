@@ -1,9 +1,11 @@
 package com.ht.scada.common.tag.entity;
 
+import com.ht.scada.security.entity.User;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 单井、回路等末端节点
@@ -100,6 +102,11 @@ public class EndTag extends AbstractPersistable<Integer> {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "energy_id")
 	private EnergyMinorTag energyMinorTag;
+
+//    @ManyToMany(targetEntity = User.class, cascade = {
+//            CascadeType.MERGE, CascadeType.PERSIST })
+//    @JoinTable(name = "T_endTag_User", joinColumns = { @JoinColumn(name = "endTag_id") }, inverseJoinColumns = { @JoinColumn(name = "user_id") })
+//    private Set<User> varGroupCfgSet;
 
     public Integer getChannelIdx() {
         return channelIdx;

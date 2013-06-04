@@ -12,26 +12,33 @@
 	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<jdbc:embedded-database id="dataSource" type="H2"/>
+	<!--<jdbc:embedded-database id="dataSource" type="H2"/>-->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath*:/application.test.properties" />
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
 
 	<!-- <context:load-time-weaver/> -->
 
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.ht.scada.common.user.entity"/>
+		<property name="packagesToScan" value="com.ht.scada.**.entity"/>
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="showSql" value="true" />
 				<property name="generateDdl" value="true" />
-				<property name="database" value="H2" />
+				<property name="database" value="${database.dialect}" />
 			</bean>
 		</property>
 		<property name="persistenceXmlLocation" value="classpath*:META-INF/test-persistence.xml"/>
 		<property name="persistenceUnitName" value="primary" />
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
 				<prop key="javax.persistence.validation.mode">none</prop>
@@ -40,9 +47,9 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.ht.scada.common.user.entity, com.ht.scada.common.user.service.impl" />
+	<context:component-scan base-package="com.ht.scada.**.entity, com.ht.scada.**.service.impl" />
 
-	<jpa:repositories base-package="com.ht.scada.common.user.dao" />
+	<jpa:repositories base-package="com.ht.scada.**.dao" />
 
 	<!-- 用于指定一些高级特性 -->
 	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
@@ -53,23 +60,5 @@
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 		
-	<!-- Required for security annotations to work in this servlet -->
-    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"/>
-    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor"/>
-    
-
-	<!-- Shiro's main business-tier object for web-enabled applications -->
-	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
-		<property name="realm" ref="shiroDbRealm" />
-<!-- 		<property name="cacheManager" ref="shiroEhcacheManager" /> -->
-	</bean>
-
-	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
-	<bean id="shiroDbRealm" class="com.ht.scada.security.ShiroDbRealm" depends-on="userDao,userRoleDao">
-		<property name="userService" ref="userService"/>
-	</bean>
-
-    <!-- Post processor that automatically invokes init() and destroy() methods -->
-    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
 </beans>

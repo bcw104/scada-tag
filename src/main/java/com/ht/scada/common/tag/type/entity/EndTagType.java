@@ -1,19 +1,11 @@
 package com.ht.scada.common.tag.type.entity;
 
-import java.util.List;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.ht.scada.common.tag.entity.VarGroupCfg;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import com.ht.scada.common.tag.entity.VarGroupCfg;
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 监控对象类型
@@ -63,6 +55,7 @@ public class EndTagType extends AbstractPersistable<Integer> {
 			CascadeType.MERGE, CascadeType.PERSIST })
 	@JoinTable(name = "T_endTagType_varGroupType", joinColumns = { @JoinColumn(name = "endTagType_id") }, inverseJoinColumns = { @JoinColumn(name = "varGroupType_id") })
 	private Set<VarGroupCfg> varGroupCfgSet;
+
 
 	public String getName() {
 		return name;

@@ -15,8 +15,6 @@
     <description>基础配置，标签配置，类型配置, 通道配置，设备配置</description>
 
     <properties>
-        <spring.version>3.2.0.RELEASE</spring.version>
-        <jpa.version>2.0.0</jpa.version>
         <junit.version>4.11</junit.version>
         <hibernate.version>4.1.9.Final</hibernate.version>
         <slf4j.version>1.6.6</slf4j.version>
@@ -42,6 +40,17 @@
             <artifactId>scada-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.ht.scada</groupId>
+            <artifactId>scada-security</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>${version.aopalliance}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -51,7 +60,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring.version}</version>
+            <version>${version.spring}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -61,12 +70,17 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
+            <version>${version.spring}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <version>${version.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${version.spring}</version>
         </dependency>
         <dependency>
             <groupId>javax.inject</groupId>
@@ -99,9 +113,19 @@
             <version>4.1.9.Final</version>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>4.1.9.Final</version>
+        </dependency>
+        <dependency>
             <groupId>org.jumpmind.symmetric.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
             <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.25</version>
         </dependency>
     </dependencies>
 

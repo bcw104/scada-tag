@@ -25,7 +25,7 @@ public class VarGroupCfg extends AbstractPersistable<Integer> {
 	private String name;// 英文名
 	
 
-	private int intvl = 0;// 存储间隔
+	private int intvl = 0;// 存储间隔,单位为分钟
 
 	
 
