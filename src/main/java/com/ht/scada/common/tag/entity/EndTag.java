@@ -83,7 +83,6 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "device_id")
-	@JsonIgnore
 	private AcquisitionDevice device;
 
 	/**

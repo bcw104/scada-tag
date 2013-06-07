@@ -12,6 +12,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 采集设备(RTU)<br>
  * 用于定义采集设备的基本信息
@@ -36,9 +38,12 @@ public class AcquisitionDevice extends AbstractDevice {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="channel_id")
+	@JsonIgnore
 	private AcquisitionChannel channel;
 	
+	
 	@OneToMany(mappedBy="rtuDevice")
+	@JsonIgnore
 	private List<SensorDevice> sensorDevices;
 	
 	public AcquisitionDevice() {
