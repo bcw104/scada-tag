@@ -81,7 +81,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 * 主要用于采集程序，如果需要显示采集通道的状态也会用到其中的信息
 	 * </p>
 	 */
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "device_id")
 	private AcquisitionDevice device;
 
