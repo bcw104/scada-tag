@@ -1,12 +1,8 @@
 package com.ht.scada.common.tag.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.alibaba.fastjson.annotation.JSONField;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 
 /**
  * 传感器设备
@@ -23,7 +19,7 @@ public class SensorDevice extends AbstractDevice {
 	private static final long serialVersionUID = -4215030492033268594L;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="rtu_device_id")
-	@JsonIgnore
+	@JSONField(serialize = false)
 	private AcquisitionDevice rtuDevice;
 	
 
