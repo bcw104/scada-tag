@@ -1,19 +1,11 @@
 package com.ht.scada.common.tag.entity;
 
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.annotations.Index;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 单井、回路等末端节点
@@ -68,11 +60,11 @@ public class EndTag extends AbstractPersistable<Integer> {
 	private String tplName;
 	
 	@OneToMany(mappedBy = "endTag",  orphanRemoval=true)
-	@JsonIgnore
+	@JSONField(serialize = false)
 	private List<VarIOInfo> ioInfo;
 
 	@OneToMany(mappedBy = "endTag", orphanRemoval=true)
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private List<EndTagExtInfo> extInfo;
 
 	/**
@@ -93,7 +85,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "major_id")
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private MajorTag majorTag;
 
 	/**
@@ -104,7 +96,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "area_id")
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private AreaMinorTag areaMinorTag;
 
 	/**
@@ -115,7 +107,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "energy_id")
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private EnergyMinorTag energyMinorTag;
 
     public Integer getChannelIdx() {
