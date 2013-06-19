@@ -1,18 +1,11 @@
 package com.ht.scada.common.tag.entity;
 
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.alibaba.fastjson.annotation.JSONField;
 import org.hibernate.annotations.Type;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * 采集设备(RTU)<br>
@@ -38,12 +31,12 @@ public class AcquisitionDevice extends AbstractDevice {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="channel_id")
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private AcquisitionChannel channel;
 	
 	
 	@OneToMany(mappedBy="rtuDevice")
-	@JsonIgnore
+    @JSONField(serialize = false)
 	private List<SensorDevice> sensorDevices;
 	
 	public AcquisitionDevice() {
