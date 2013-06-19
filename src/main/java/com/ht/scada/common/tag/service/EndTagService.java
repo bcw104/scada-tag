@@ -14,6 +14,13 @@ public interface EndTagService extends BaseService<EndTag>{
 	 */
 	public List<EndTag> getEndTagByParentId(int id);
 
+    /**
+     * 查询指定MajorTag下的所有末端对象
+     * @param id
+     * @return
+     */
+    List<EndTag> getEndTagByMajorTagId(int id);
+
     List<EndTag> getEndTag4Comm();
 
     EndTag getByCode(String code);

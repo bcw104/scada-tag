@@ -50,6 +50,11 @@ public class EndTagServiceImpl implements EndTagService {
 	}
 
     @Override
+    public List<EndTag> getEndTagByMajorTagId(int id) {
+        return endTagDao.findByMajorTagId(id);
+    }
+
+    @Override
     public List<EndTag> getEndTag4Comm() {
         return endTagDao.findByChannelIdxNotNullAndDeviceAddrNotNull();
     }
