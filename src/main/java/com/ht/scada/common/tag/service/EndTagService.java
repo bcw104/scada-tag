@@ -29,4 +29,10 @@ public interface EndTagService extends BaseService<EndTag>{
      * @param endTagList
      */
     void saveAll(List<EndTag> endTagList);
+    /**
+     * 通过类型获得所有EndTag
+     * @param type
+     * @return 
+     */
+    List<EndTag> getByType(String type);
 }

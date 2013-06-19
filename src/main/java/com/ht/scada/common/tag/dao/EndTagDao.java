@@ -15,4 +15,5 @@ public interface EndTagDao extends JpaRepository<EndTag, Integer> {
 	public List<EndTag> findByMajorTag(MajorTag majorTag);
     public List<EndTag> findByChannelIdxNotNullAndDeviceAddrNotNull();
     public EndTag findByCode(String code);
+    public List<EndTag> findByType(String type);
 }
