@@ -60,11 +60,9 @@ public class EndTag extends AbstractPersistable<Integer> {
 	private String tplName;
 	
 	@OneToMany(mappedBy = "endTag",  orphanRemoval=true)
-	@JSONField(serialize = false)
 	private List<VarIOInfo> ioInfo;
 
 	@OneToMany(mappedBy = "endTag", orphanRemoval=true)
-    @JSONField(serialize = false)
 	private List<EndTagExtInfo> extInfo;
 
 	/**
@@ -85,7 +83,6 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "major_id")
-    @JSONField(serialize = false)
 	private MajorTag majorTag;
 
 	/**
@@ -96,7 +93,6 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "area_id")
-    @JSONField(serialize = false)
 	private AreaMinorTag areaMinorTag;
 
 	/**
@@ -107,7 +103,6 @@ public class EndTag extends AbstractPersistable<Integer> {
 	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "energy_id")
-    @JSONField(serialize = false)
 	private EnergyMinorTag energyMinorTag;
 
     public Integer getChannelIdx() {
@@ -165,7 +160,8 @@ public class EndTag extends AbstractPersistable<Integer> {
 	public void setTplName(String tplName) {
 		this.tplName = tplName;
 	}
-	
+
+    @JSONField(serialize = false)
 	public List<VarIOInfo> getIoInfo() {
 		return ioInfo;
 	}
@@ -174,6 +170,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 		this.ioInfo = ioInfo;
 	}
 
+    @JSONField(serialize = false)
 	public List<EndTagExtInfo> getExtInfo() {
 		return extInfo;
 	}
@@ -190,6 +187,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 		this.device = device;
 	}
 
+    @JSONField(serialize = false)
 	public MajorTag getMajorTag() {
 		return majorTag;
 	}
@@ -198,6 +196,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 		this.majorTag = majorTag;
 	}
 
+    @JSONField(serialize = false)
 	public AreaMinorTag getAreaMinorTag() {
 		return areaMinorTag;
 	}
@@ -206,6 +205,7 @@ public class EndTag extends AbstractPersistable<Integer> {
 		this.areaMinorTag = areaMinorTag;
 	}
 
+    @JSONField(serialize = false)
 	public EnergyMinorTag getEnergyMinorTag() {
 		return energyMinorTag;
 	}

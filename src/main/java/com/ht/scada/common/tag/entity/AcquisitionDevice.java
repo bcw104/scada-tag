@@ -31,12 +31,10 @@ public class AcquisitionDevice extends AbstractDevice {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="channel_id")
-    @JSONField(serialize = false)
 	private AcquisitionChannel channel;
 	
 	
 	@OneToMany(mappedBy="rtuDevice")
-    @JSONField(serialize = false)
 	private List<SensorDevice> sensorDevices;
 	
 	public AcquisitionDevice() {
@@ -70,6 +68,7 @@ public class AcquisitionDevice extends AbstractDevice {
 		this.used = used;
 	}
 
+    @JSONField(serialize = false)
 	public AcquisitionChannel getChannel() {
 		return channel;
 	}
@@ -77,7 +76,8 @@ public class AcquisitionDevice extends AbstractDevice {
 	public void setChannel(AcquisitionChannel channel) {
 		this.channel = channel;
 	}
-	
+
+    @JSONField(serialize = false)
 	public List<SensorDevice> getSensorDevices() {
 		return sensorDevices;
 	}

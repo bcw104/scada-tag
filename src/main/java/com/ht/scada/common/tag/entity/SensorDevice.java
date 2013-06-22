@@ -19,10 +19,9 @@ public class SensorDevice extends AbstractDevice {
 	private static final long serialVersionUID = -4215030492033268594L;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="rtu_device_id")
-	@JSONField(serialize = false)
 	private AcquisitionDevice rtuDevice;
-	
 
+    @JSONField(serialize = false)
 	public AcquisitionDevice getRtuDevice() {
 		return rtuDevice;
 	}
