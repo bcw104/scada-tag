@@ -30,5 +30,13 @@ public interface EndTagExtInfoService extends BaseService<EndTagExtInfo> {
 	 * @param id
 	 */
 	void deleteByEndTagId(Integer id);
+	
+	/**
+	 * 通过编号和keyName获取属性
+	 * @param code
+	 * @param keyName
+	 * @return
+	 */
+	EndTagExtInfo getByCodeAndKeyName(String code, String keyName);
 
 }
