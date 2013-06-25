@@ -180,7 +180,7 @@ public class TypeServiceImpl implements TypeService {
 		varSubTypeDao.deleteAll();
 		varTypeDao.deleteAll();
 		endTagSubTypeDao.deleteAll();
-		varGroupCfgDao.deleteAll();
+//		varGroupCfgDao.deleteAll();
 		endTagTypeDao.deleteAll();
 		majorTagTypeDao.deleteAll();
 		dataTypeDao.deleteAll();

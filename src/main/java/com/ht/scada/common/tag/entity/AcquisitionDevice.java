@@ -31,6 +31,7 @@ public class AcquisitionDevice extends AbstractDevice {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="channel_id")
+	@JSONField(serialize = false)
 	private AcquisitionChannel channel;
 	
 	
