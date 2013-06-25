@@ -78,7 +78,7 @@ public class AcquisitionDevice extends AbstractDevice {
 		this.channel = channel;
 	}
 
-    @JSONField(serialize = false)
+    //@JSONField(serialize = false)
 	public List<SensorDevice> getSensorDevices() {
 		return sensorDevices;
 	}
