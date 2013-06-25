@@ -56,5 +56,9 @@ public class EndTagExtInfoServiceImpl implements EndTagExtInfoService {
 	public void deleteByEndTagId(Integer id) {
 		endTagExtInfoDao.deleteByTagId(id);
 	}
+	
+	public EndTagExtInfo getByCodeAndKeyName(String code, String keyName) {
+		return endTagExtInfoDao.getByCodeAndKeyName(code, keyName);
+	}
 
 }

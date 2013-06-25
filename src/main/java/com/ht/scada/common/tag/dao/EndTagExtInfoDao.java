@@ -28,4 +28,21 @@ public interface EndTagExtInfoDao extends JpaRepository<EndTagExtInfo, Integer> 
 	@Query("delete from EndTagExtInfo e where e.endTag.id = ?1")
 	public void deleteByTagId(int id);
 	
+	/**
+	 * 通过code获得EndTagExtInfo
+	 * @param code
+	 * @return
+	 */
+	@Query("select e from EndTagExtInfo e where e.endTag.code = ?1")
+	List<EndTagExtInfo> getByEndTagCode(String code);
+	
+	/**
+	 * 通过编号和keyName获取属性
+	 * @param code
+	 * @param keyName
+	 * @return
+	 */
+	@Query("select e from EndTagExtInfo e where e.endTag.code = ?1 and e.keyName = ?2")
+	EndTagExtInfo getByCodeAndKeyName(String code, String keyName);
+	
 }
