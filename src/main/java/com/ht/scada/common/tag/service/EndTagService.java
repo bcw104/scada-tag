@@ -35,4 +35,9 @@ public interface EndTagService extends BaseService<EndTag>{
      * @return 
      */
     List<EndTag> getByType(String type);
+    /**
+     * 获取所有EndTag
+     * @return
+     */
+    List<EndTag> getAllEndTag();
 }

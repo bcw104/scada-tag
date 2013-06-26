@@ -74,4 +74,10 @@ public class EndTagServiceImpl implements EndTagService {
         return endTagDao.findByType(type);
     }
 
+	@Override
+	public List<EndTag> getAllEndTag() {
+		return endTagDao.findAll();
+	}
+    
+
 }
