@@ -12,6 +12,9 @@ public interface EndTagDao extends JpaRepository<EndTag, Integer> {
     @Query("select t from EndTag t where t.majorTag.id=?1")
     public List<EndTag> findByMajorTagId(Integer majorTagId);
 
+    @Query("select t.channelIdx from EndTag t where t.majorTag.id=?1")
+    public Integer getChannelIdxByCode(String code);
+
 	public List<EndTag> findByMajorTag(MajorTag majorTag);
     public List<EndTag> findByChannelIdxNotNullAndDeviceAddrNotNull();
     public EndTag findByCode(String code);
