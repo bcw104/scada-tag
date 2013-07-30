@@ -18,7 +18,7 @@ import com.ht.scada.common.tag.type.dao.MajorTagTypeDao;
 import com.ht.scada.common.tag.type.dao.VarSubTypeDao;
 import com.ht.scada.common.tag.type.dao.VarTypeDao;
 import com.ht.scada.common.tag.type.entity.CommunicationProtocalType;
-import com.ht.scada.common.tag.type.entity.DataType;
+import com.ht.scada.common.tag.type.entity.DataValueType;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoName;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoValue;
 import com.ht.scada.common.tag.type.entity.EndTagSubType;
@@ -180,7 +180,7 @@ public class TypeServiceImpl implements TypeService {
 		varSubTypeDao.deleteAll();
 		varTypeDao.deleteAll();
 		endTagSubTypeDao.deleteAll();
-//		varGroupCfgDao.deleteAll();
+		varGroupCfgDao.deleteAll();
 		endTagTypeDao.deleteAll();
 		majorTagTypeDao.deleteAll();
 		dataTypeDao.deleteAll();
@@ -199,12 +199,12 @@ public class TypeServiceImpl implements TypeService {
 		
 	}
 	@Override
-	public void insertDataType(List<DataType> dataTypeList) {
+	public void insertDataType(List<DataValueType> dataTypeList) {
 		dataTypeDao.save(dataTypeList);
 	}
 
 	@Override
-	public List<DataType> getAllDataType() {
+	public List<DataValueType> getAllDataType() {
 		return dataTypeDao.findAll();
 	}
 	@Override

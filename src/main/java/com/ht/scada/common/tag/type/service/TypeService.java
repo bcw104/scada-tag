@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ht.scada.common.tag.entity.VarGroupCfg;
 import com.ht.scada.common.tag.type.entity.CommunicationProtocalType;
-import com.ht.scada.common.tag.type.entity.DataType;
+import com.ht.scada.common.tag.type.entity.DataValueType;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoName;
 import com.ht.scada.common.tag.type.entity.EndTagExtInfoValue;
 import com.ht.scada.common.tag.type.entity.EndTagSubType;
@@ -104,7 +104,7 @@ public interface TypeService {
 	 * 插入值类型
 	 * @param dataTypeList
 	 */
-	public void insertDataType(List<DataType> dataTypeList);
+	public void insertDataType(List<DataValueType> dataTypeList);
 	
 	/**
 	 * 插入通讯协议
@@ -123,7 +123,7 @@ public interface TypeService {
 	public List<MajorTagType> getAllMajorTagType();
 	public List<EndTagType> getAllEndTagType();
 	public List<VarSubType> getAllVarSubType();
-	public List<DataType> getAllDataType();
+	public List<DataValueType> getAllDataType();
 	public List<CommunicationProtocalType> getAllCommunicationProtocalType();
 	
 	
