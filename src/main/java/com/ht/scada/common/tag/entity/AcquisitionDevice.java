@@ -35,7 +35,7 @@ public class AcquisitionDevice extends AbstractDevice {
 	private AcquisitionChannel channel;
 	
 	
-	@OneToMany(mappedBy="rtuDevice")
+	@OneToMany(mappedBy="rtuDevice", fetch = FetchType.EAGER)
 	private List<SensorDevice> sensorDevices;
 	
 	public AcquisitionDevice() {
